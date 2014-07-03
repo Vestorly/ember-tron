@@ -1,4 +1,4 @@
-import initializeTorii from 'test/helpers/initialize-torii';
+import initializeEmberTron from 'test/helpers/initialize-ember-tron';
 
 function startApp(attrs) {
   var App;
@@ -19,7 +19,7 @@ function startApp(attrs) {
   });
 
   if (loadInitializers) {
-    initializeTorii(Application);
+    initializeEmberTron(Application);
   }
 
   Ember.run(function(){

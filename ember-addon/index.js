@@ -3,9 +3,9 @@
 var path = require('path');
 var fs   = require('fs');
 
-function EmberToriiAddon(project) {
+function EmberTronAddon(project) {
   this.project = project;
-  this.name    = 'Torii';
+  this.name    = 'Tron';
 }
 
 function unwatchedTree(dir) {
@@ -15,7 +15,7 @@ function unwatchedTree(dir) {
   };
 }
 
-EmberToriiAddon.prototype.treeFor = function treeFor(name) {
+EmberTronAddon.prototype.treeFor = function treeFor(name) {
 
   // include app-addon (this has the initializers so that loadInitializers
   // will automatically include them)
@@ -24,33 +24,22 @@ EmberToriiAddon.prototype.treeFor = function treeFor(name) {
   // and we must also be sure to make those things importable by
   // explicitly declaring them when we do app.import in `included`
 
-  // vendor-addon has the built version of torii as a named amd module,
-  // in the directory 'torii', so that it is properly namespaced for our
+  // vendor-addon has the built version of tron as a named amd module,
+  // in the directory 'tron', so that it is properly namespaced for our
   // app.import call in `included`
 
-  // There are no styles for torii, so when treeFor is called with 'styles',
+  // There are no styles for tron, so when treeFor is called with 'styles',
   // this is a no-op
 
-  var treePath = path.join('node_modules', 'torii', name + '-addon');
+  var treePath = path.join('node_modules', 'ember-tron', name + '-addon');
 
   if (fs.existsSync(treePath)) {
     return unwatchedTree(treePath);
   }
 };
 
-EmberToriiAddon.prototype.included = function included(app) {
-  app.import('vendor/torii/torii.amd.js', {
-    exports: {
-      'torii/torii': ['default'],
-
-      // These are all exports that the torii initializers must import
-      'torii/session': ['default'],
-      'torii/bootstrap': ['default'],
-      'torii/configuration': ['default'],
-      'torii/redirect-handler': ['default']
-    }
-  });
-
+EmberTronAddon.prototype.included = function included(app) {
+  app.import('vendor/ember-tron/styles/style.css');
 };
 
-module.exports = EmberToriiAddon;
+module.exports = EmberTronAddon;

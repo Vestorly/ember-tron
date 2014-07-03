@@ -19,7 +19,7 @@
       });
     </script>
     <script src='../bower_components/ember-resolver/dist/ember-resolver.js'></script>
-    <script src='../dist/torii.amd.js'></script>
+    <script src='../dist/ember-tron.amd.js'></script>
     <script src='../bower_components/qunit/qunit/qunit.js'></script>
     <script type="text/javascript" charset="utf-8">
       define('qunit', [  ], function(){
@@ -51,7 +51,7 @@
     <div id="qunit-fixture"></div>
     <script src='../tmp/tests.amd.js'></script>
     <script>
-      window.ENV = {torii: { didLoadFromEnv: true, sessionServiceName: 'session' } };
+      window.ENV = {ember-tron: { didLoadFromEnv: true, sessionServiceName: 'session' } };
       require('test/test-helper');
       require('test/test-loader');
     </script>
